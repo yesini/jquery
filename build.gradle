@@ -18,11 +18,22 @@ repositories {
 }
 
 dependencies {
+  // spring web
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+  // thymeleaf
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+  // dev-tools
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  // lombok
+  implementation 'org.projectlombok:lombok'
+  // JPA
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  // mysql j connector
+  runtimeOnly 'com.mysql:mysql-connector-j'
+  // spring security
+  // ?
 }
 
 tasks.named('test') {
