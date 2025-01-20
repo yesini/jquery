@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5. find(), end()</title>
+    <style>
+ 
+    </style>
+
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+			$('ul').find('.item1').css('background-color', '#e0e') // $로 뭔가 찾고, 그 내부에 있는 자식 태그 중에 뭔가를 찾기
+			       .end() // end는 마지막으로 검색한 것의 직전 상태로 돌아가라는 뜻. 즉 'ui'로 가라. DOM을 전부 검색하지 않아도 됨.
+			       .find('.item3').css('background-color', '#0ee')
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ 5. find(), end() ]</h2>
+    <ul class="first">
+    	<li class="item1">Item 1</li>
+    	<li>Item 2</li>
+    	<li class="item3">Item 3</li>
+    </ul>
+    
+    <ul class="second">
+    	<li class="item1">Item 1</li>
+    	<li>Item 2</li>
+    	<li class="item3">Item 3</li>
+    </ul>    
+</body>
+
+</html>

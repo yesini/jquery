@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2. 제이쿼리를 이용해 DOM에 접근</title>
+    <style>
+    	div.myclass, span {
+    		width: 200px;
+    		height:40px;
+    		background-color:light-gray;
+    		float : left;
+    		padding: 10px;
+    		margin: 10px;
+    	}
+    </style>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+    	// 1) JS를 이용해서 DOM에 접근하기
+		// window.onload=function() {
+    	// document.getElementsByTagName("li")[2].style.backgroundColor = "yellow";
+    	// }
+    	
+    	
+    	// 2) jQuery를 이용해서 DOM에 접근하는 방법
+    	//    jQuery를 이용해서 DOM에 접근할 땐 기본적으로 css 표현법을 사용하므로 css의 selector(선택자)가 중요함!!
+    	$(function(){ 
+    		$("li:nth-child(3)").css("background-color", "green");
+    		// <body>의 <li> 태그 중 3번째 것에 css를 적용한다는 뜻.
+    		
+    		let temp = $(".myclass.otherclass");   // (1) temp 변수에 jquery객체가 할당(body 태그의 myclass otherclass)
+    		temp.css('border', '3px solid red')    // (2) 그렇게 찾은 jquery객체에 css 효과를 부여
+    		    .css('color', "magenta")           // (3) 위에서 반환한 값이 다시 jquery 객체일 경우 method chaining이 가능
+    		    
+			// 위의 코드를 한줄에 사용 
+			$(".myclass.otherclass").css('border', '3px solid red').css('color', "magenta");
+    	})
+
+    </script>
+</head>
+
+	<!--   -->
+
+
+<body>
+    <h2>2. 제이쿼리를 이용해 DOM에 접근</h2>
+    <p>첫 번째 문장</p>
+    <div id="main">
+    	<ul>
+    		<li>Item-1</li>
+    		<li>Item-2</li>
+    		<li>Item-3</li>
+    	</ul>
+    </div>
+    
+    <hr>
+    <p>두 번째 문장(class 속성으로 접근)</p>
+	<div class="myclass">div태그의 .myclass</div>    
+	<div class="myclass otherclass">div태그의 .myclass.otherclass</div>    
+	<span class="myclass otherclass">span태그의 .myclass.otherclass</span>    
+</body>
+
+</html>
+
+
+
+
+

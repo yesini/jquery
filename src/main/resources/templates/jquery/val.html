@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. form 태그의 유효성 검증을 위한 val()</title>
+    <style>
+ 
+    </style>
+
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script> 
+        $(function () {
+			$("#readData").on('click', function() {
+				let name = $("#username").val();      // val() 이면 Read 
+				let email = $("#useremail").val();    // val('문자열') 이면 Write
+				
+				// 1) 여기에 입력받은 name, email을 target 위치에 출력!
+				let outData = `이름: ${name}<br>이메일: ${email}`;
+				$('#target').html(outData);
+				
+			}); 
+			
+        		// 2) sendData를 클릭하면 name, email을 서버로 전송하고 다시 여기로 돌아옴
+			$("#sendData").on('click', function() {
+				let name = $("#username").val();      // Read : val()
+				let email = $("#useremail").val();    // Write: val('문자열')
+				
+				// 검증한 후
+				$("#myForm").submit(); //myform 내의 input 태그로 들어온 전체 데이터를 서버로 전송 
+				
+			});
+			
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ 7. form 태그의 유효성 검증을 위한 val() ]</h2>
+
+	<div>
+		<form th:action="@{/jquery/valResult}" id="myForm" method="POST">
+			<input type="text" name="username" id="username">
+			<input type="text" name="useremail" id="useremail">
+			<input type="button" value="전송" id="sendData">
+			<input type="button" value="확인" id="readData">
+		</form>
+	</div>
+	<p id="target">
+	</p>
+</body>
+
+</html>
+

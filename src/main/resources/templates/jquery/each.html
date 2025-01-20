@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 12. each 함수를 이용한 반복 </title>
+    
+    <style>
+    	div {
+    		width : 100px;
+    		height : 100px;
+			border: 1px solid rgb(245, 15, 15);   
+    		float:left;
+    		margin: 10px;
+    		}
+    </style>
+    
+	<script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+			let timer;
+        	let test = 0;
+
+        	$('#start').on('click', function(){
+        	// 타이머 실행
+       		timer = setInterval(function(){   	
+				let tags = $('div'); // div 요소를 선택
+				
+				tags.each(function(index, item) {
+					// 0 ~ 255 (정수의 개수는 256)
+					let red   = Math.floor(Math.random() * 256);
+					let green = Math.floor(Math.random() * 256);
+					let blue  = Math.floor(Math.random() * 256);
+					
+					let color = `rgb(${red}, ${green}, ${blue})`; // 변수값 끼워넣기 위해 백틱 `` 사용
+					
+					$(this).css('background-color', color);
+			});
+		}, 1000); // 1초마다 색상 변경
+	});
+
+	  // 타이머 멈추기
+	$('#stop').on('click', function() { //$로 stop을 찾은 뒤 클릭하면 function 실행
+		clearInterval(timer);
+	});
+});	        
+     </script>
+</head>
+
+<body>
+    <h2>[ 12. each 함수를 이용한 반복 ]</h2>
+	<div class="a">하나</div>
+	<div>둘</div>
+	<div>셋</div>
+	<div>넷</div>
+	<div>다섯</div>
+	
+	<p>
+		<input type="button" id="start" value="시작">
+		<input type="button" id="stop"  value="종료">
+	</p>
+	
+</body>
+</html>

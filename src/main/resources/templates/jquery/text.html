@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. text(), html()</title>
+    <style>
+ 
+    </style>
+
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+			$('#btn1').on('click', function() { 
+				let data = '송아지 송아지 <b style="color:red;">얼룩 송아지</b> 엄마소도 얼룩소 엄마 닮았네.'
+				let myText = $('#myText').text(); // text() 괄호 안에 아무것도 없으면 그냥 읽는 것 Read
+				$("#target").text(myText);        // text() 괄호 안에 뭔가 있으면 Write
+				 $('#myText').html(data);         // #myText 안에 data 적용. text(data)로 하면 태그 적용 못함.
+			});
+			
+			
+			// getAttribute(), setAttribute()는 자바스크립트 명령
+			// attr() : 속성값을 읽어오거나 수정할 때 사용
+			// attr('속성명') : 속성명을 읽어옴
+			// attr('속성명', '값') : 속성을 수정
+			$('#btn2').on('click', function() { // 마우스 클릭하면 이미지 변경
+				let target = '/images/cat.png';
+				$('img').attr('src', target);   // attr('속성명', '값') : 속성값을 수정
+				
+			});
+			
+			$('#myimg').on('mouseenter', function(){ // 마우스를 갖다 대면 이미지 변경
+				let target = '/images/cat.png';
+				$('img').attr('src', target); 
+			});
+			
+			$('#myimg').on('mouseleave', function(){ // 마우스를 떼면ㅍ 이미지 변경
+				let target = '/images/face.png';
+				$('img').attr('src', target); 
+			});
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ 6. text(), html() ]</h2>
+ 	<p id="myText">무궁화 꽃이 피었습니다.</p>
+ 	<p id="target"></p>
+ 	<p>
+ 		<img id="myimg" th:src="@{/images/face.png}" >
+ 	</p>
+ 	<p>
+ 		<input type="button" id="btn1" value="글씨">
+ 		<input type="button" id="btn2" value="그림">
+ 	</p>
+</body>
+
+</html>
+

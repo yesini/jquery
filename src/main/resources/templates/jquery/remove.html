@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. 요소 삭제(remove, empty)</title>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+			$('#remove').on('click', function(){
+				$('#app img:first').remove();    
+			});
+        	
+			$('#empty').on('click', function() {
+				$('#app2').empty();     // 종료태그가 있는 안쪽의 자식태그 삭제
+			});
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ 10. 요소 삭제(remove, empty) ]</h2>
+    <p>remove: 특정 객체의 요소 한 개 삭제</p>
+    
+	<button id="remove" title="remove 삭제">remove를 이용한 삭제</button>
+	<div id="app"> 
+		<img src="/images/face_happy.png" alt="얼굴">
+		<img src="/images/face_normal.png" alt="얼굴">
+		<img src="/images/face_smile.png" alt="얼굴">
+		<img src="/images/face_surprise.png" alt="얼굴">
+		<img src="/images/face_unbelievable.png" alt="얼굴">
+		<img src="/images/face_what.png" alt="얼굴">
+		<img src="/images/face_bad.png" alt="얼굴">
+	</div>
+	
+	<br><hr>
+	<p>empty: 특정 객체의 요소 삭제</p> 
+	<button id="empty" title="empty 삭제">empty를 이용한 삭제</button>
+	<div id="app2">
+		<img src="/images/face_happy.png" alt="얼굴">
+		<img src="/images/face_normal.png" alt="얼굴">
+		<img src="/images/face_smile.png" alt="얼굴">
+		<img src="/images/face_surprise.png" alt="얼굴">
+		<img src="/images/face_unbelievable.png" alt="얼굴">
+		<img src="/images/face_what.png" alt="얼굴">
+		<img src="/images/face_bad.png" alt="얼굴">
+	</div>
+</body>
+
+</html>

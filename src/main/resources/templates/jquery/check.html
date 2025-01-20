@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> [11. checkbox 상태확인] </title>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+		 	$('#check1').on('change', function(){
+		 		let mycheck = $(this);
+		 		$('p#status').html(
+		 			'attr : ' + mycheck.attr('checked') + '<br>' 
+		 			+ 'is :  ' + mycheck.is(':checked') + '<br>'
+		 			+ 'prop : ' + mycheck.prop('checked') + '<br>'
+		 		);
+		 	})	
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ 11. checkbox 상태확인(prop, attr, is) ]</h2>
+    <div>
+    	<input type="checkbox" id="check1" checked="checked">
+    	<label for="check1">Remember Me</label>
+    </div>
+    <p id="status"></p>
+</body>
+</html>
+
+<!-- 위 코드 설명
+ 
+exam01에서 테이블 헤드의 체크박스를 선택하면 나머지 체크박스도 모두 선택되게 하는 것
+
+-->
+
+
+
+
+
+
+
+
+

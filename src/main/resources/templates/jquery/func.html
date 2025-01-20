@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4. 함수형태의 선택자: eq(), not(), each()</title>
+    <style>
+        div.item1,
+        div.item2,
+        div.item3 {
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+            margin: 5px;
+            float: left;
+        }
+		
+        div.first,
+        div.second,
+        div.third {
+            clear: both;
+            /* float:left 값을 초기화 */
+        }
+    </style> 
+
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+			let len = $('div').length;   
+			// eq(n) : n은 index값 (0부터 시작)
+			$('div.item1').eq(2).css({'background':'orange', 'border': '2px dashed red'})
+			
+			// nth-child(2n) : n은 1부터 시작
+			$('div.item2:nth-child(2n)').css({'background':'cyan'});
+			$('div.item2').not(':nth-child(2n)').css({'background':'gold'});
+			
+			// each()문은 반복적인 동작을 할 때 사용: for~each문임
+			// each(), is() 함수에 집중하시오! 
+			$('div.item3').each(function(index, item) { 
+				// is() 함수는 상태값에 따라 true, false를 반환
+				if( $(this).is('.choice') ) {  
+					$(this).css('background', 'skyblue');
+				}
+			});
+        });
+    </script>
+</head>
+
+<body>
+    <h2>[ 4. 함수형태의 선택자: eq(), not(), each() ]</h2>
+
+    <div class="first">
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+        <div class="item1"></div>
+    </div>
+
+    <div class="second">
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+        <div class="item2"></div>
+    </div>
+
+    <div class="third">
+        <div class="item3"></div>
+        <div class="item3 choice"></div>
+        <div class="item3"></div>
+        <div class="item3"></div>
+        <div class="item3 choice"></div>
+        <div class="item3 choice"></div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9. 요소 추가(append, prepend)</title>
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+			// 1) 추가(append)를 누르면 실행할 이벤트
+			$('#append').on('click', function() {
+				let myImg = [ 
+					'/images/face_bad.png'
+					, '/images/face_happy.png' 
+					, '/images/face_normal.png'
+					, '/images/face_smile.png'
+					, '/images/face_surprise.png'   
+					, '/images/face_unbelievable.png'
+					, '/images/face_what.png'];
+				
+				let choice = Math.floor(Math.random() * (myImg.length)); 
+				let tag = `<img src="${myImg[choice]}" alt="얼굴">`;
+
+				$('div#app').append(tag); // rendering할 수 있는 태그값을 append()의 인자
+			});
+			// 22행 코드 설명
+			// Math.random() : 0~1 사이의 랜덤 수를 반환
+			// myImg.length : myImg 배열의 길이	
+			// Math.floor() : 소수점 이하를 버리는 함수
+			// 0~1 사이 생성된 난수와 myImg의 길이(7)을 곱한 뒤 소수점 이하를 버리면 0~6 사이의 정수가 생성됨
+			// 그걸 choice에 저장
+
+			
+
+        	// 2) prepend 버튼을 누르면 실행할 이벤트 핸들러
+			$('#prepend').on('click', function(){
+				$('div#app2').prepend($('div#app2 img:last'))
+			});
+        });
+		// div 요소 중 app2 선택 후 img에서 마지막 요소를 prepend() 메서드를 이용해 맨 앞에 추가
+    </script>
+</head>
+
+<body>
+    <h2>[ 9. 요소 추가(append, prepend) ]</h2>
+	<button id="append" title="append 추가">append를 이용한 추가</button>
+	<div id="app"></div>
+	
+	<hr>
+	<button id="prepend" title="prepend 추가">prepend를 이용한 추가</button>
+	<div id="app2">
+		<img src="/images/face_happy.png" alt="얼굴">
+		<img src="/images/face_normal.png" alt="얼굴">
+		<img src="/images/face_smile.png" alt="얼굴">
+		<img src="/images/face_surprise.png" alt="얼굴">
+		<img src="/images/face_unbelievable.png" alt="얼굴">
+		<img src="/images/face_what.png" alt="얼굴">
+		<img src="/images/face_bad.png" alt="얼굴">
+	</div>
+</body>
+
+</html>

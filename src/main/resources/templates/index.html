@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery</title>
+</head>
+
+<body>
+	<h2>jQuery 기본 사용법</h2>
+	<div>
+		<a th:href="@{/jquery/basic}">1. 제이쿼리 기초</a><br>
+		<a th:href="@{/jquery/css}">2. 제이쿼리를 이용해 DOM에 접근</a><br>
+		<a th:href="@{/jquery/selector}">3. 제이쿼리의 selector(CSS의 selector와 동일)</a>
+		<br><br>
+		
+		<a th:href="@{/jquery/func}">4. 함수형태의 선택자: eq(), not(), is()</a><br>
+		<a th:href="@{/jquery/func2}">5. find(), end()</a><br>
+		
+		<a th:href="@{/jquery/text}">6. html()-innerHTML, text()-innerText : RW</a><br>
+		<!-- 6번은 특히 중요 -->
+		
+		<a th:href="@{/jquery/val}">7. form 태그의 유효성 검증을 위한 val()</a><br>
+		<a th:href="@{/jquery/validation}">8. 회원가입(유효성 검증 포함)</a><br>
+		<br><br>
+		
+		<a th:href="@{/jquery/append}">9. 요소 추가(append(), prepend())</a><br>
+		<a th:href="@{/jquery/remove}">10. 요소 삭제(remove(), empty())</a><br>
+		<a th:href="@{/jquery/exam01}">[연습] 우수고객 등록_01</a><br>
+		<a th:href="@{/jquery/check}">11. checkbox 상태확인</a><br>
+		<br><br>
+		<a th:href="@{/jquery/each}">12. each 함수를 이용한 반복</a><br>
+		<a th:href="@{/jquery/exam02}">[연습] 우수고객 등록_02</a><br>
+	</div>
+ 
+</body>
+
+</html>

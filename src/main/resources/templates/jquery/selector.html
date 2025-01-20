@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3. 제이쿼리의 selector</title>
+   
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+ 		$(function() {  // 제이쿼리 사용할 땐 무조건 $(function() { 로 시작
+ 			// a태그 중 href 속성이 있는 요소를 선택
+ 			$('#wrap a[href]').css('border', '3px solid black');
+ 			
+ 			// ^= href 속성값이 특정 값으로 '시작'하는 요소
+ 			$('#wrap a[href^=https]').css('background-color', 'pink');
+ 			
+ 			// $= href 속성값이 지정한 값으로 '끝'나는 요소
+ 			$('#wrap a[href$=net]').css('color', '#ffff00');
+ 			
+ 			// *= href 속성값이 지정한 값을 '포함' 하는 요소
+ 			$('#wrap a[href*=google]').css('color', '#0ff');
+ 			
+ 			// form 요소에 접근하는 선택자(여러 방법 중 하나. 유일한 방법이 아님)
+ 			$('#userid:text').css('background-color', '#eee');
+ 			
+ 			// $('input[type=text]').css('background-color', '#eee');
+ 			$('#userid:text').css('background-color', 'yellow');
+ 			$('#userpwd:password').css('background-color', 'orange');
+ 		});
+    </script>
+</head>
+
+<body>
+	<h2>[ 제이쿼리 Selector ]</h2>
+	<div id="wrap">
+		<p><a href="https://naver.com" target="네이버">네이버</a></p>
+		<p><a href="https://nate.com">네이트</a></p>
+		<p><a href="https://news.google.com/home?hl=ko&gl=KR&ceid=KR:ko">구글</a></p>
+		<p><a href="https://daum.net">다음</a></p>
+		<p><a href="https://google.com">구글</a></p>
+	</div>
+	
+	<hr> 
+	<div>
+		<form action="" >
+			<label>아이디:
+				<input type="text" id="userid">
+			</label> <br><br>
+			<label>비밀번호:
+				<input type="password" id="userpwd">
+			</label>	
+		</form>
+	</div>
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8. 회원가입(유효성 검증 포함)</title>
+    <style>
+ 
+    </style>
+	
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+			let sendData = $('#sendData').on('click', memberData);
+        });
+        
+        function memberData() {
+        	let userid = $('#userid').val(); 
+        	if(userid.length < 3 || userid.length > 5) {
+        		alert("아이디는 3~5자 입력");
+        		$('#userid').select();
+        		return;
+        	}
+        	// 코드 설명
+			// $는 jQuery() 함수의 단축 표현. HTML 요소를 선택하고 jQuery 객체로 변환
+			// 예) $('#userid') : id가 userid인 요소를 선택
+			// 예) $('#userid').val() : id가 userid인 요소의 값을 가져옴
+			// 예) $('#userid').select() : if 조건이 참이면(즉, 유효하지 않으면) 사용자가 
+			// 입력한 내용을 쉽게 수정하도록 입력 필드에 커서를 놓는 기능
+        	
+			let userpwd = $('#userpwd').val();
+
+        	if(userpwd.length < 3 || userpwd.length > 5) {
+        		alert("비밀번호는 3~5자 입력");
+        		$('#userpwd').select();
+        		return;
+        	}
+        	
+        	let age =  $('#age').val();
+        	
+        	// 19~50
+        	if(age < 19 || age > 50) {
+        		alert("19~50세까지만 등록 가능");
+        		$('#age').select();
+        		return;
+        	}
+        	
+        	$('#joinForm').submit();
+        }
+    </script>
+</head>
+
+<body>
+    <h2>[ 8. 회원가입(유효성 검증 포함) ]</h2>
+
+	<form th:action="@{/jquery/memberJoin}" method="POST" id="joinForm">
+		<label>
+			아이디: <input type="text" name="userid" id="userid" >
+		</label><br>
+		<label> 
+			비밀번호: <input type="password" name="userpwd" id="userpwd" >
+		</label><br>
+		<label>
+			나이: <input type="number" name="age" id="age" >
+		</label><br>	
+		<label>
+			지역: 
+			<select name="location" id="location">
+				<option value="서울">서울시
+				<option value="부산">부산시
+				<option value="광주">광주시
+				<option value="인천">인천시
+			</select>
+		</label><br>	
+
+		<input type="button" value="회원가입" id="sendData">
+	</form>
+	
+	<th:block th:if="${member != null}">
+	<div id="result">
+		<p>아이디 : <span th:text="${member.userid}"></span></p>
+		<p>비밀번호 : <span th:text="${member.userpwd}"></span></p>
+		<p>나이 : <span th:text="${member.age}"></span></p>
+		<p>지역 : <span th:text="${member.location }"></span></p>
+	</div>
+	</th:block>
+</body>
+</html>
+

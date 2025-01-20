@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1. 제이쿼리 기초</title>
+    <!-- 브라우저 오류가 $ undefined가 출력되면 라이브러리추가에서 오류가 난 것임 -->
+    
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script>
+        $(function () {
+            alert("제이쿼리 실행1");
+        })  // 콜백 함수라고 함.
+    </script>
+    <!-- 제이쿼리 사용하려면 위와 같이 th:src로 제이쿼리 파일 불러오고 
+         아래에 function 작성 -->
+</head>
+
+<body>
+    <h2>1. 제이쿼리 기초</h2>
+    <div>
+    	라이브러리 추가부터 해야한다.<br>
+    	추가를 잘못했을 경우에는 브라우저에서 오류를 확인!
+    </div>
+</body>
+
+</html>
